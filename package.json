@@ -1,14 +1,14 @@
 {
   "name": "wepan",
   "version": "1.0.0",
-  "description": "todo",
-  "homepage": "https://github.com/user-lezi/Wepan#readme",
+  "description": "Wepan is our alternative to forgepanel's style.",
+  "homepage": "https://github.com/weebforge/Wepan#readme",
   "bugs": {
-    "url": "https://github.com/user-lezi/Wepan/issues"
+    "url": "https://github.com/weebforge/Wepan/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/user-lezi/Wepan.git"
+    "url": "git+https://github.com/weebforge/Wepan.git"
   },
   "license": "GPL-3.0-or-later",
   "author": "lezii006",
