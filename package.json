@@ -1,0 +1,42 @@
+{
+  "name": "wepan",
+  "version": "1.0.0",
+  "description": "todo",
+  "homepage": "https://github.com/user-lezi/Wepan#readme",
+  "bugs": {
+    "url": "https://github.com/user-lezi/Wepan/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/user-lezi/Wepan.git"
+  },
+  "license": "GPL-3.0-or-later",
+  "author": "lezii006",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepublishOnly": "tsc",
+    "build": "tsc -p tsconfig.json",
+    "docgen": "npm run eslint && npm run build && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
+    "eslint": "eslint ./src/**/* --fix && prettier src --write",
+    "commit": "npm run docgen && node dist/@build/commit",
+    "test": "npm run build && node dist/__scripts__/index"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@eslint/js": "^10.0.1",
+    "@tryforge/forgescript": "github:tryforge/forgescript#dev",
+    "@types/node": "^26.4.1",
+    "@typescript-eslint/eslint-plugin": "^8.69.0",
+    "@typescript-eslint/parser": "^8.69.0",
+    "dotenv": "^17.4.2",
+    "eslint": "^10.10.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.6",
+    "typedoc": "^0.28.20",
+    "typedoc-rhineai-theme": "^1.2.0",
+    "typescript": "^6.0.3"
+  }
+}

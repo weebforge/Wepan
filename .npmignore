@@ -1,0 +1,9 @@
+.*
+src
+dist/__scripts__
+dist/@build
+dist/docgen.*
+eslint.config.mjs
+tsconfig.json
+metadata
+docs

@@ -1,0 +1,1 @@
+[{"name":"$panelVersion","description":"Returns installed panel version.","version":"1.0.0","unwrap":false,"output":["String"]}]
