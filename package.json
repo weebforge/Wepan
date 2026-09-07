@@ -1,7 +1,7 @@
 {
   "name": "wepan",
   "version": "1.0.0",
-  "description": "Wepan is our alternative to forgepanel's style.",
+  "description": "WeebPanel is our alternative to forgepanel's style.",
   "homepage": "https://github.com/weebforge/Wepan#readme",
   "bugs": {
     "url": "https://github.com/weebforge/Wepan/issues"
@@ -18,7 +18,10 @@
   "scripts": {
     "prepublishOnly": "tsc",
     "build": "tsc -p tsconfig.json",
-    "docgen": "npm run eslint && npm run build && npm run build:js && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
+    "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
+    "build:css": "npx @tailwindcss/cli -i ./panel/style.tw.css -o ./panel/style.css",
+    "watch:css": "npx @tailwindcss/cli -i ./panel/style.tw.css -o ./panel/style.css --watch",
+    "docgen": "npm run eslint && npm run build && npm run build:js&& npm run build:css && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix && prettier src panel --write",
     "commit": "npm run docgen && node dist/@build/commit",
     "build:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --minify --sourcemap && uglifyjs panel/bundle.js -c -m --toplevel -o panel/bundle.js ",
@@ -28,16 +31,19 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.7",
     "@eslint/js": "^10.0.1",
+    "@tailwindcss/cli": "^4.3.3",
     "@tryforge/forgescript": "github:tryforge/forgescript#dev",
     "@types/node": "^26.4.1",
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
+    "concurrently": "^10.0.5",
     "dotenv": "^17.4.2",
     "esbuild": "^0.28.2",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.12.0",
     "prettier": "^3.9.6",
+    "tailwindcss": "^4.3.3",
     "typedoc": "^0.28.20",
     "typedoc-rhineai-theme": "^1.2.0",
     "typescript": "^6.0.3",

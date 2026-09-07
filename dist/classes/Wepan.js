@@ -87,6 +87,7 @@ class WeebPanel extends forgescript_1.ForgeExtension {
             fetch: this.app.fetch,
             ...this.options.server,
         }, (i) => this.emitter.emit("connect", i));
+        client.on("clientReady", () => (client.application.fetch(), client.application.commands.fetch()));
     }
     loadApi() {
         this.routes.api = new hono_1.Hono();
@@ -106,6 +107,7 @@ class WeebPanel extends forgescript_1.ForgeExtension {
         this.app.get("/", (c) => c.html((0, node_fs_1.readFileSync)("panel/index.html", "utf8")));
         this.app.get("/index.html", (c) => c.redirect("/"));
         this.app.get("/index.ts", (c) => c.notFound());
+        this.app.get("/style.tw.css", (c) => c.notFound());
         this.app.get("/scripts/*", (c) => c.notFound());
         this.app.use("/*", (0, serve_static_1.serveStatic)({
             root: "./panel/",

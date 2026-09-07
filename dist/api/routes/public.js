@@ -10,12 +10,26 @@ exports.default = (0, load_1.loadRoute)(function (panel) {
         return c.json({
             uptime: client.uptime,
             guilds: client.guilds.cache.size,
-            users: client.users.cache.size,
+            users: [
+                client.guilds.cache.reduce((a, b) => a + b.memberCount, 0),
+                client.users.cache.size,
+            ],
             channels: client.channels.cache.size,
             websocket: {
                 status: client.ws.status,
                 ping: client.ws.ping,
             },
+        });
+    });
+    this.get("/client-public", (c) => {
+        const client = this.client.user;
+        return c.json({
+            username: client.username,
+            discrimintor: client.discriminator,
+            avatar: client.displayAvatarURL({ size: 2048 }),
+            banner: client.bannerURL({ size: 2048 }) ?? null,
+            id: client.id,
+            description: this.client.application.description,
         });
     });
     this.post("/login", (c) => {

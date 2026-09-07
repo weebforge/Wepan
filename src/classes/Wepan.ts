@@ -186,6 +186,11 @@ export class WeebPanel extends ForgeExtension {
       },
       (i) => this.emitter.emit("connect", i),
     );
+
+    client.on(
+      "clientReady",
+      () => (client.application.fetch(), client.application.commands.fetch()),
+    );
   }
 
   private loadApi() {
@@ -212,6 +217,7 @@ export class WeebPanel extends ForgeExtension {
     this.app.get("/", (c) => c.html(readFileSync("panel/index.html", "utf8")));
     this.app.get("/index.html", (c) => c.redirect("/"));
     this.app.get("/index.ts", (c) => c.notFound());
+    this.app.get("/style.tw.css", (c) => c.notFound());
     this.app.get("/scripts/*", (c) => c.notFound());
 
     this.app.use(
