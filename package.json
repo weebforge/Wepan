@@ -18,9 +18,11 @@
   "scripts": {
     "prepublishOnly": "tsc",
     "build": "tsc -p tsconfig.json",
-    "docgen": "npm run eslint && npm run build && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
+    "docgen": "npm run eslint && npm run build && npm run build:js && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix && prettier src --write",
     "commit": "npm run docgen && node dist/@build/commit",
+    "build:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --minify --sourcemap && uglifyjs panel/bundle.js -c -m --toplevel -o panel/bundle.js ",
+    "watch:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --sourcemap --watch",
     "test": "npm run build && node dist/__scripts__/index"
   },
   "devDependencies": {
@@ -31,13 +33,15 @@
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
     "dotenv": "^17.4.2",
+    "esbuild": "^0.28.2",
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "globals": "^17.12.0",
     "prettier": "^3.9.6",
     "typedoc": "^0.28.20",
     "typedoc-rhineai-theme": "^1.2.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "uglify-js": "^3.19.3"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.1",

@@ -25,9 +25,10 @@ export declare class WeebPanel extends ForgeExtension {
     emitter: TypedEmitter<TransformEvents<IWeebPanelEvents>>;
     commands: WeebPanelCommandManager;
     app: Hono;
-    private api;
+    private routes;
     constructor(options?: IWeebPanelOptions);
     init(client: ForgeClient): void;
     private loadApi;
+    private loadPanelFiles;
 }
 //# sourceMappingURL=Wepan.d.ts.map

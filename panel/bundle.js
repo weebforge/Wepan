@@ -1,0 +1,1 @@
+var o,r;o=()=>{console.log("Hello World!")};try{r||o((r={exports:{}}).exports,r),r.exports}catch(o){throw r=0,o}

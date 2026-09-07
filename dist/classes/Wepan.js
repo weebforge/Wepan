@@ -9,7 +9,9 @@ const tiny_typed_emitter_1 = require("tiny-typed-emitter");
 const cors_1 = require("hono/cors");
 const node_path_1 = require("node:path");
 const pretty_json_1 = require("hono/pretty-json");
+const node_fs_1 = require("node:fs");
 const node_server_1 = require("@hono/node-server");
+const serve_static_1 = require("@hono/node-server/serve-static");
 class WeebPanel extends forgescript_1.ForgeExtension {
     name = "WeebPanel";
     description = require("../../package.json").description;
@@ -18,7 +20,7 @@ class WeebPanel extends forgescript_1.ForgeExtension {
     emitter = new tiny_typed_emitter_1.TypedEmitter();
     commands;
     app;
-    api;
+    routes;
     constructor(options = {}) {
         super();
         this.options = {
@@ -43,6 +45,8 @@ class WeebPanel extends forgescript_1.ForgeExtension {
                 this.emitter.emit("error", c.error, c);
             }
         });
+        this.routes = {};
+        this.loadPanelFiles();
         this.loadApi();
         this.app.notFound((c) => c.text("Not found", 404));
         (0, node_server_1.serve)({
@@ -51,14 +55,23 @@ class WeebPanel extends forgescript_1.ForgeExtension {
         }, (i) => this.emitter.emit("connect", i));
     }
     loadApi() {
-        this.api = new hono_1.Hono();
-        this.api.client = this.app.client;
-        this.api.use("/*", (0, cors_1.cors)());
-        this.api.use((0, pretty_json_1.prettyJSON)({
+        this.routes.api = new hono_1.Hono();
+        this.routes.api.client = this.app.client;
+        this.routes.api.use("/*", (0, cors_1.cors)());
+        this.routes.api.use((0, pretty_json_1.prettyJSON)({
             force: true,
         }));
-        api_1.ApiRoutes.forEach((route) => route.bind(this.api)(this));
-        this.app.route("/api", this.api);
+        api_1.ApiRoutes.forEach((route) => route.bind(this.routes.api)(this));
+        this.app.route("/api", this.routes.api);
+    }
+    loadPanelFiles() {
+        this.app.get("/", (c) => c.html((0, node_fs_1.readFileSync)("panel/index.html", "utf8")));
+        this.app.get("/index.html", (c) => c.redirect("/"));
+        this.app.get("/index.ts", (c) => c.notFound());
+        this.app.get("/scripts/*", (c) => c.notFound());
+        this.app.use("/*", (0, serve_static_1.serveStatic)({
+            root: "./panel/",
+        }));
     }
 }
 exports.WeebPanel = WeebPanel;

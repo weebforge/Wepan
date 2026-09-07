@@ -10,7 +10,9 @@ import { TypedEmitter } from "tiny-typed-emitter"
 import { cors } from "hono/cors"
 import { join } from "node:path"
 import { prettyJSON } from "hono/pretty-json"
+import { readFileSync } from "node:fs"
 import { serve } from "@hono/node-server"
+import { serveStatic } from "@hono/node-server/serve-static"
 
 export interface IWeebPanelOptions {
   hono?: HonoOptions<BlankEnv>
@@ -34,7 +36,9 @@ export class WeebPanel extends ForgeExtension {
   public commands!: WeebPanelCommandManager
 
   public app!: Hono
-  private api!: Hono
+  private routes!: {
+    api: Hono
+  }
 
   constructor(options: IWeebPanelOptions = {}) {
     super()
@@ -64,6 +68,8 @@ export class WeebPanel extends ForgeExtension {
       }
     })
 
+    this.routes = {} as any
+    this.loadPanelFiles()
     this.loadApi()
 
     this.app.notFound((c) => c.text("Not found", 404))
@@ -79,18 +85,32 @@ export class WeebPanel extends ForgeExtension {
   }
 
   private loadApi() {
-    this.api = new Hono()
-    this.api.client = this.app.client
-    this.api.use("/*", cors())
-    this.api.use(
+    this.routes.api = new Hono()
+    this.routes.api.client = this.app.client
+    this.routes.api.use("/*", cors())
+    this.routes.api.use(
       prettyJSON({
         force: true,
       })
     )
 
     //load routes
-    ApiRoutes.forEach((route) => route.bind(this.api)(this))
+    ApiRoutes.forEach((route) => route.bind(this.routes.api)(this))
 
-    this.app.route("/api", this.api)
+    this.app.route("/api", this.routes.api)
+  }
+
+  private loadPanelFiles() {
+    this.app.get("/", (c) => c.html(readFileSync("panel/index.html", "utf8")))
+    this.app.get("/index.html", (c) => c.redirect("/"))
+    this.app.get("/index.ts", (c) => c.notFound())
+    this.app.get("/scripts/*", (c) => c.notFound())
+
+    this.app.use(
+      "/*",
+      serveStatic({
+        root: "./panel/",
+      })
+    )
   }
 }
