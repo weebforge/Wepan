@@ -10,10 +10,13 @@ export default new NativeFunction({
   description: "Returns the context info",
   unwrap: true,
   brackets: true,
-  args: [Arg.requiredEnum(ContextProperty, "property", "The proprty of context")],
+  args: [
+    Arg.requiredEnum(ContextProperty, "property", "The proprty of context"),
+    Arg.optionalString("sep", "The seperator"),
+  ],
   output: ArgType.Unknown,
-  execute(ctx, [prop]) {
+  execute(ctx, [prop, sep]) {
     if (!(ctx.runtime.extras instanceof Context)) return this.customError("No context found.")
-    return this.success(ContextProperties[prop](ctx.runtime.extras))
+    return this.success(ContextProperties[prop](ctx.runtime.extras, sep))
   },
 })

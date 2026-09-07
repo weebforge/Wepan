@@ -4,7 +4,7 @@ const forgescript_1 = require("@tryforge/forgescript");
 const Wepan_1 = require("../classes/Wepan");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
-const CHLID = "1482304931896754298";
+const CHLID = "1546448087071989760";
 const panel = new Wepan_1.WeebPanel({
     server: {
         port: 5555,
@@ -30,8 +30,10 @@ panel.commands.add({
 panel.commands.add({
     type: "listen",
     code: `
+    $arrayLoad[a;\n;$wpn[matchedRoutePath;\n]]
+    $!arayPop[a]
     $sendMessage[${CHLID};
-      $wpn[method] $wpn[path]
+      \`$wpn[method]\` $wpn[url]\n- \`$arrayJoin[a;\`\n- \`]\`
     ]
   `,
 });

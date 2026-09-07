@@ -10,12 +10,15 @@ exports.default = new forgescript_1.NativeFunction({
     description: "Returns the context info",
     unwrap: true,
     brackets: true,
-    args: [forgescript_1.Arg.requiredEnum(context_1.ContextProperty, "property", "The proprty of context")],
+    args: [
+        forgescript_1.Arg.requiredEnum(context_1.ContextProperty, "property", "The proprty of context"),
+        forgescript_1.Arg.optionalString("sep", "The seperator"),
+    ],
     output: forgescript_1.ArgType.Unknown,
-    execute(ctx, [prop]) {
+    execute(ctx, [prop, sep]) {
         if (!(ctx.runtime.extras instanceof hono_1.Context))
             return this.customError("No context found.");
-        return this.success(context_1.ContextProperties[prop](ctx.runtime.extras));
+        return this.success(context_1.ContextProperties[prop](ctx.runtime.extras, sep));
     },
 });
 //# sourceMappingURL=panelCtx.js.map

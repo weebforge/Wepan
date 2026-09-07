@@ -3,7 +3,7 @@ import { WeebPanel } from "../classes/Wepan"
 import { config } from "dotenv"
 config()
 
-const CHLID = "1482304931896754298"
+const CHLID = "1546448087071989760"
 
 const panel = new WeebPanel({
   server: {
@@ -32,8 +32,10 @@ panel.commands.add({
 panel.commands.add({
   type: "listen",
   code: `
+    $arrayLoad[a;\n;$wpn[matchedRoutePath;\n]]
+    $!arayPop[a]
     $sendMessage[${CHLID};
-      $wpn[method] $wpn[path]
+      \`$wpn[method]\` $wpn[url]\n- \`$arrayJoin[a;\`\n- \`]\`
     ]
   `,
 })
