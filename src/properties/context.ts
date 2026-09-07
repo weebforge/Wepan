@@ -1,7 +1,7 @@
-import { basePath, baseRoutePath, matchedRoutes, routePath } from "hono/route"
+import { basePath, baseRoutePath, matchedRoutes, routePath } from "hono/route";
 
-import { Context } from "hono"
-import defineProperties from "@tryforge/forgescript/dist/functions/defineProperties"
+import { Context } from "hono";
+import defineProperties from "@tryforge/forgescript/dist/functions/defineProperties";
 
 export enum ContextProperty {
   env = "env",
@@ -15,7 +15,10 @@ export enum ContextProperty {
   basePath = "basePath",
 }
 
-export const ContextProperties = defineProperties<typeof ContextProperty, Context>({
+export const ContextProperties = defineProperties<
+  typeof ContextProperty,
+  Context
+>({
   env: (c) => c?.env,
   error: (c) => c?.error?.message,
   method: (c) => c?.req.method,
@@ -30,4 +33,4 @@ export const ContextProperties = defineProperties<typeof ContextProperty, Contex
       : null,
   baseRoutePath: (c) => (c ? baseRoutePath(c) : null),
   basePath: (c) => (c ? basePath(c) : null),
-})
+});

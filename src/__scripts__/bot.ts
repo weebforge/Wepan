@@ -1,11 +1,11 @@
-import { ForgeClient } from "@tryforge/forgescript"
-import { WeebPanel } from "../classes/Wepan"
-import { WeebPanelPermission } from "../classes/WepanPermission"
-import { config } from "dotenv"
+import { ForgeClient } from "@tryforge/forgescript";
+import { WeebPanel } from "../classes/Wepan";
+import { WeebPanelPermission } from "../classes/WepanPermission";
+import { config } from "dotenv";
 
-config()
+config();
 
-const CHLID = "1546448087071989760"
+const CHLID = "1546448087071989760";
 
 const panel = new WeebPanel({
   server: {
@@ -20,7 +20,7 @@ const panel = new WeebPanel({
     },
   ],
   logAccessKeys: true,
-})
+});
 
 const client = new ForgeClient({
   prefixes: ["!"],
@@ -28,7 +28,7 @@ const client = new ForgeClient({
   intents: ["MessageContent", "GuildMessages", "Guilds"],
   events: ["messageCreate", "clientReady"],
   extensions: [panel],
-})
+});
 
 panel.commands.add({
   type: "error",
@@ -38,7 +38,7 @@ panel.commands.add({
       $description[$error]
     ]
   `,
-})
+});
 panel.commands.add({
   type: "listen",
   code: `
@@ -48,19 +48,19 @@ panel.commands.add({
       \`$wpn[method]\` $wpn[url]\n- \`$arrayJoin[a;\`\n- \`]\`
     ]
   `,
-})
+});
 
 client.commands.add({
   name: "ping",
   type: "messageCreate",
   code: "`$pingms`",
-})
+});
 client.commands.add({
   name: "eval",
   type: "messageCreate",
   code: `$onlyIf[$authorID==910837428862984213]
     $eval[$message]
     $sendMessage[$channelID;$codeblock[$message] $executionTime]`,
-})
+});
 
-client.login()
+client.login();

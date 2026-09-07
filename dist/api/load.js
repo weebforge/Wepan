@@ -16,7 +16,8 @@ function markPrivateRoute(route, permissions) {
         if (!user)
             return c.json({ error: "Invalid access key" }, 403);
         const userPermissions = new WepanPermission_1.WeebPanelPermissionsBitField(user.permissions);
-        if (!userPermissions.has(WepanPermission_1.WeebPanelPermission.Admin) && !userPermissions.has(permissions)) {
+        if (!userPermissions.has(WepanPermission_1.WeebPanelPermission.Admin) &&
+            !userPermissions.has(permissions)) {
             return c.json({ error: "Insufficient permissions" }, 403);
         }
         c.set("User", user);

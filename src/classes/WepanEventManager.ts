@@ -1,18 +1,22 @@
-import { BaseEventHandler, ForgeClient } from "@tryforge/forgescript"
+import { BaseEventHandler, ForgeClient } from "@tryforge/forgescript";
 
-import { AddressInfo } from "node:net"
-import { Context } from "hono"
-import { HTTPResponseError } from "hono/types"
-import { WeebPanel } from "./Wepan"
+import { AddressInfo } from "node:net";
+import { Context } from "hono";
+import { HTTPResponseError } from "hono/types";
+import { WeebPanel } from "./Wepan";
 
 export interface IWeebPanelEvents {
-  error: [err: Error | HTTPResponseError, ctx: Context]
-  connect: [info: AddressInfo]
-  listen: [ctx: Context]
+  error: [err: Error | HTTPResponseError, ctx: Context];
+  connect: [info: AddressInfo];
+  listen: [ctx: Context];
 }
-export class WeebPanelEventHandler<T extends keyof IWeebPanelEvents> extends BaseEventHandler<IWeebPanelEvents, T> {
+export class WeebPanelEventHandler<
+  T extends keyof IWeebPanelEvents,
+> extends BaseEventHandler<IWeebPanelEvents, T> {
   register(client: ForgeClient): void {
-    // @ts-ignore
-    client.getExtension(WeebPanel, true).emitter.on(this.name, this.listener.bind(client))
+    client
+      .getExtension(WeebPanel, true)
+      // @ts-ignore
+      .emitter.on(this.name, this.listener.bind(client));
   }
 }

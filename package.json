@@ -19,7 +19,7 @@
     "prepublishOnly": "tsc",
     "build": "tsc -p tsconfig.json",
     "docgen": "npm run eslint && npm run build && npm run build:js && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
-    "eslint": "eslint ./src/**/* --fix && prettier src --write",
+    "eslint": "eslint ./src/**/* --fix && prettier src panel --write",
     "commit": "npm run docgen && node dist/@build/commit",
     "build:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --minify --sourcemap && uglifyjs panel/bundle.js -c -m --toplevel -o panel/bundle.js ",
     "watch:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --sourcemap --watch",

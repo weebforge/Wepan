@@ -1,6 +1,6 @@
-import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript"
+import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript";
 
-import { Context } from "hono"
+import { Context } from "hono";
 
 export default new NativeFunction({
   name: "$error",
@@ -10,9 +10,12 @@ export default new NativeFunction({
   output: ArgType.Unknown,
   execute(ctx) {
     // for weebpanel
-    if (ctx.runtime.extras instanceof Context && ctx.runtime.extras.error instanceof Error)
-      return this.success(ctx.runtime.extras.error)
+    if (
+      ctx.runtime.extras instanceof Context &&
+      ctx.runtime.extras.error instanceof Error
+    )
+      return this.success(ctx.runtime.extras.error);
 
-    return this.success(ctx.runtime.extras)
+    return this.success(ctx.runtime.extras);
   },
-})
+});

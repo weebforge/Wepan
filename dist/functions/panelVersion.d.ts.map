@@ -1,1 +1,1 @@
-{"version":3,"file":"panelVersion.d.ts","sourceRoot":"","sources":["../../src/functions/panelVersion.ts"],"names":[],"mappings":"AAAA,OAAO,EAAO,OAAO,EAAE,cAAc,EAAE,MAAM,uBAAuB,CAAA;;AAIpE,wBASE"}
+{"version":3,"file":"panelVersion.d.ts","sourceRoot":"","sources":["../../src/functions/panelVersion.ts"],"names":[],"mappings":"AAAA,OAAO,EAAO,OAAO,EAAE,cAAc,EAAE,MAAM,uBAAuB,CAAC;;AAIrE,wBASG"}

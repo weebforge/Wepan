@@ -22,7 +22,9 @@ class WeebPanelPermissionsBitField {
     }
     has(permission, checkAny = false) {
         const bits = WeebPanelPermissionsBitField.resolve(permission);
-        return checkAny ? (this.bitfield & bits) !== 0 : (this.bitfield & bits) === bits;
+        return checkAny
+            ? (this.bitfield & bits) !== 0
+            : (this.bitfield & bits) === bits;
     }
     add(...permissions) {
         this.bitfield |= permissions.reduce((bits, permission) => bits | WeebPanelPermissionsBitField.resolve(permission), 0);

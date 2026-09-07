@@ -58,7 +58,7 @@ class WeebPanel extends forgescript_1.ForgeExtension {
         }
         if (this.options.logAccessKeys) {
             forgescript_1.Logger.info("WeebPanel: Generated Access Keys:");
-            for (const [key, { permissions, userId }] of this.#generatedAccessKeys.entries()) {
+            for (const [key, { permissions, userId },] of this.#generatedAccessKeys.entries()) {
                 forgescript_1.Logger.info(` UserID: ${userId}, Key: ${key}, Permissions: ${permissions}`);
             }
         }

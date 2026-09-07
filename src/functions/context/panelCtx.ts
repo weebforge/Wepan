@@ -1,7 +1,7 @@
-import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript"
-import { ContextProperties, ContextProperty } from "../../properties/context"
+import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript";
+import { ContextProperties, ContextProperty } from "../../properties/context";
 
-import { Context } from "hono"
+import { Context } from "hono";
 
 export default new NativeFunction({
   name: "$panelCtx",
@@ -16,7 +16,8 @@ export default new NativeFunction({
   ],
   output: ArgType.Unknown,
   execute(ctx, [prop, sep]) {
-    if (!(ctx.runtime.extras instanceof Context)) return this.customError("No context found.")
-    return this.success(ContextProperties[prop](ctx.runtime.extras, sep))
+    if (!(ctx.runtime.extras instanceof Context))
+      return this.customError("No context found.");
+    return this.success(ContextProperties[prop](ctx.runtime.extras, sep));
   },
-})
+});

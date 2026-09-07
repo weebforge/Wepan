@@ -14,7 +14,9 @@ exports.default = new forgescript_1.NativeFunction({
     unwrap: true,
     output: [forgescript_1.ArgType.String, forgescript_1.ArgType.BigInt],
     execute(ctx, [asString]) {
-        const fingerprint = asString ? (0, fingerprint_1.getDeviceFingerprint)("string") : (0, fingerprint_1.getDeviceFingerprint)("bigint");
+        const fingerprint = asString
+            ? (0, fingerprint_1.getDeviceFingerprint)("string")
+            : (0, fingerprint_1.getDeviceFingerprint)("bigint");
         return this.success(fingerprint);
     },
 });

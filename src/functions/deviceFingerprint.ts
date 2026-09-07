@@ -1,6 +1,6 @@
-import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript"
+import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript";
 
-import { getDeviceFingerprint } from "../util/fingerprint"
+import { getDeviceFingerprint } from "../util/fingerprint";
 
 export default new NativeFunction({
   name: "$getDeviceFingerprint",
@@ -9,12 +9,17 @@ export default new NativeFunction({
   version: "1.0.0",
   brackets: false,
   args: [
-    Arg.optionalBoolean("asString", "If true, returns the fingerprint as a string. Otherwise, returns it as a bigint."),
+    Arg.optionalBoolean(
+      "asString",
+      "If true, returns the fingerprint as a string. Otherwise, returns it as a bigint.",
+    ),
   ],
   unwrap: true,
   output: [ArgType.String, ArgType.BigInt],
   execute(ctx, [asString]) {
-    const fingerprint = asString ? getDeviceFingerprint("string") : getDeviceFingerprint("bigint")
-    return this.success(fingerprint)
+    const fingerprint = asString
+      ? getDeviceFingerprint("string")
+      : getDeviceFingerprint("bigint");
+    return this.success(fingerprint);
   },
-})
+});

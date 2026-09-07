@@ -9,7 +9,8 @@ exports.default = new forgescript_1.NativeFunction({
     unwrap: false,
     output: forgescript_1.ArgType.Unknown,
     execute(ctx) {
-        if (ctx.runtime.extras instanceof hono_1.Context && ctx.runtime.extras.error instanceof Error)
+        if (ctx.runtime.extras instanceof hono_1.Context &&
+            ctx.runtime.extras.error instanceof Error)
             return this.success(ctx.runtime.extras.error);
         return this.success(ctx.runtime.extras);
     },

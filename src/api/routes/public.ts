@@ -1,12 +1,12 @@
-import { loadRoute } from "../load"
+import { loadRoute } from "../load";
 
 export default loadRoute(function (panel) {
   this.get("/status", (c) => {
-    return c.json({ status: "ok" })
-  })
+    return c.json({ status: "ok" });
+  });
 
   this.get("/stats", (c) => {
-    const client = this.client
+    const client = this.client;
 
     return c.json({
       uptime: client.uptime,
@@ -17,14 +17,14 @@ export default loadRoute(function (panel) {
         status: client.ws.status,
         ping: client.ws.ping,
       },
-    })
-  })
+    });
+  });
 
   this.post("/login", (c) => {
-    const user = panel.checkAccessKey(c)
+    const user = panel.checkAccessKey(c);
 
-    if (!user) return c.json({ error: "Invalid access key" }, 401)
+    if (!user) return c.json({ error: "Invalid access key" }, 401);
 
-    return c.json({ user: user.userId, permissions: user.permissions })
-  })
-})
+    return c.json({ user: user.userId, permissions: user.permissions });
+  });
+});

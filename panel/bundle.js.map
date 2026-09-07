@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["index.ts"],
-  "sourcesContent": ["console.log(\"Hello World!\")"],
+  "sourcesContent": ["console.log(\"Hello World!\");\n"],
   "mappings": "kHAAA,IAAAA,EAAAC,EAAA,aAAQ,IAAI,cAAc",
   "names": ["require_index", "__commonJSMin"]
 }

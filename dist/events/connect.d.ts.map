@@ -1,1 +1,1 @@
-{"version":3,"file":"connect.d.ts","sourceRoot":"","sources":["../../src/events/connect.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,qBAAqB,EAAE,MAAM,8BAA8B,CAAA;;AAEpE,wBAwBE"}
+{"version":3,"file":"connect.d.ts","sourceRoot":"","sources":["../../src/events/connect.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,qBAAqB,EAAE,MAAM,8BAA8B,CAAC;;AAErE,wBAwBG"}

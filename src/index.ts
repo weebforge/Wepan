@@ -1,10 +1,10 @@
-import { ForgeClient } from "@tryforge/forgescript"
+import { ForgeClient } from "@tryforge/forgescript";
 
-export * from "./classes/Wepan"
-export * from "./classes/WepanPermission"
+export * from "./classes/Wepan";
+export * from "./classes/WepanPermission";
 
 declare module "hono" {
   interface Hono {
-    client: ForgeClient
+    client: ForgeClient;
   }
 }
