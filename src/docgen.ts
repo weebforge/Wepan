@@ -1,3 +1,3 @@
-import { generateMetadata } from "@tryforge/forgescript"
+import { generateMetadata } from "@tryforge/forgescript";
 
-generateMetadata(`${__dirname}/functions`, "functions", undefined, true)
+generateMetadata(`${__dirname}/functions`, "functions", undefined, true);

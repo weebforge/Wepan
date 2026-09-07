@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const forgescript_1 = require("@tryforge/forgescript");
-const Wepan_1 = require("../Wepan");
+const Wepan_1 = require("../classes/Wepan");
 exports.default = new forgescript_1.NativeFunction({
     name: "$panelVersion",
     description: "Returns installed panel version.",

@@ -1,6 +1,6 @@
-import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript"
+import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript";
 
-import { WeebPanel } from "../Wepan"
+import { WeebPanel } from "../classes/Wepan";
 
 export default new NativeFunction({
   name: "$panelVersion",
@@ -9,6 +9,6 @@ export default new NativeFunction({
   unwrap: true,
   output: ArgType.String,
   execute(ctx) {
-    return this.success(ctx.client.getExtension(WeebPanel, true).version)
+    return this.success(ctx.client.getExtension(WeebPanel, true).version);
   },
-})
+});

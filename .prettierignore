@@ -1,1 +1,4 @@
 dist
+panel/bundle.*
+panel/assets
+panel/style.css

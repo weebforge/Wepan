@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="WeebPanel is our alternative to forgepanel's style."
+    />
+    <meta name="theme-color" content="#eee9dc" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WeebPanel" />
+    <meta
+      property="og:description"
+      content="WeebPanel is our alternative to forgepanel's style."
+    />
+    <meta property="og:image" content="assets/og.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WeebPanel" />
+    <meta
+      name="twitter:description"
+      content="WeebPanel is our alternative to forgepanel's style."
+    />
+    <meta name="twitter:image" content="assets/og.png" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link rel="apple-touch-icon" href="assets/logo.svg" />
+
+    <title>WePan</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+
+    <link href="style.css" rel="stylesheet" />
+  </head>
+
+  <body class="min-h-screen bg-[#eee9dc] text-[#151819] font-sans">
+    <aside
+      class="fixed left-0 top-0 flex h-screen w-20 flex-col items-center border-r border-[#d7d1c3] bg-[#e3ddcf] py-6"
+    >
+      <button
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Menu"
+      >
+        <i data-lucide="menu" class="h-6 w-6"></i>
+      </button>
+    </aside>
+
+    <main class="ml-20 min-h-screen p-5">
+      <header
+        class="flex h-24 items-center justify-between rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-8"
+      >
+        <div class="flex items-center gap-3">
+          <div class="flex h-16 w-16 items-center justify-center">
+            <img src="assets/logo.svg" />
+          </div>
+
+          <span
+            id="header-brand-name"
+            class="text-3xl font-bold tracking-tight"
+          >
+            WeebPanel
+          </span>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <button
+            class="flex items-center gap-2 rounded-xl bg-[#762c26] px-6 py-3 font-semibold text-[#eee9dc] transition hover:bg-[#662a25]"
+          >
+            <i data-lucide="user" class="h-5 w-5"></i>
+            Login
+          </button>
+        </div>
+      </header>
+
+      <!-- This is home page, shown to both states: access and no access -->
+      <section
+        id="home-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-center rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <div
+          data-unloaded
+          class="animate-pulse mb-7 flex h-32 w-32 items-center justify-center rounded-full bg-[#762c26] text-[#eee9dc]"
+        >
+          <i data-lucide="bot" class="h-20 w-20"></i>
+        </div>
+
+        <h1
+          data-unloaded
+          class="animate-pulse text-center text-5xl font-bold tracking-tight sm:text-6xl"
+        >
+          Loading...
+        </h1>
+
+        <p
+          data-unloaded
+          class="animate-pulse mt-4 text-center text-xl text-[#151819]/60"
+        >
+          Loading...
+        </p>
+
+        <div
+          id="bot-stats-cards"
+          class="mt-16 grid w-full max-w-6xl grid-cols-1 gap-5 md:grid-cols-3"
+        >
+          <div
+            class="rounded-2xl border border-[#d7d1c3] bg-[#eee9dc] p-8 text-center transition hover:-translate-y-1"
+          >
+            <div
+              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e3ddcf] text-[#762c26]"
+            >
+              <i data-lucide="server" class="h-7 w-7"></i>
+            </div>
+
+            <p class="mt-5 text-lg text-[#151819]/60">Guilds</p>
+
+            <p
+              data-unloaded
+              class="mt-1 flex items-center justify-center text-4xl font-bold"
+            >
+              <i data-lucide="loader-circle" class="animate-spin h-16 w-16"></i>
+            </p>
+          </div>
+
+          <div
+            class="rounded-2xl border border-[#d7d1c3] bg-[#eee9dc] p-8 text-center transition hover:-translate-y-1"
+          >
+            <div
+              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e3ddcf] text-[#762c26]"
+            >
+              <i data-lucide="users" class="h-7 w-7"></i>
+            </div>
+
+            <p class="mt-5 text-lg text-[#151819]/60">Users</p>
+
+            <p
+              data-unloaded
+              class="mt-1 flex items-center justify-center text-4xl font-bold"
+            >
+              <i data-lucide="loader-circle" class="animate-spin h-16 w-16"></i>
+            </p>
+          </div>
+
+          <div
+            class="rounded-2xl border border-[#d7d1c3] bg-[#eee9dc] p-8 text-center transition hover:-translate-y-1"
+          >
+            <div
+              class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-[#e3ddcf] text-[#762c26]"
+            >
+              <i data-lucide="clock" class="h-7 w-7"></i>
+            </div>
+
+            <p class="mt-5 text-lg text-[#151819]/60">Uptime</p>
+
+            <p
+              data-unloaded
+              class="mt-1 flex items-center justify-center text-4xl font-bold"
+            >
+              <i data-lucide="loader-circle" class="animate-spin h-16 w-16"></i>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      lucide.createIcons();
+    </script>
+
+    <script src="bundle.js"></script>
+  </body>
+</html>

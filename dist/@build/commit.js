@@ -30,7 +30,9 @@ async function main() {
     })
         .trim();
     const fileName = (0, path_1.join)(path, "changelogs.json");
-    const json = (0, fs_1.existsSync)(fileName) ? JSON.parse((0, fs_1.readFileSync)(fileName, "utf-8")) : {};
+    const json = (0, fs_1.existsSync)(fileName)
+        ? JSON.parse((0, fs_1.readFileSync)(fileName, "utf-8"))
+        : {};
     json[version] ??= [];
     const author = (0, child_process_1.execSync)("git config user.name").toString().trim();
     if (!skip) {
@@ -41,11 +43,17 @@ async function main() {
         });
         (0, fs_1.writeFileSync)(fileName, JSON.stringify(json), "utf-8");
     }
-    const branch = (await (0, prompt_1.default)("Write the branch name to push to (defaults to dev): ")) || "dev";
+    const branch = (await (0, prompt_1.default)("Write the branch name to push to (defaults to dev): ")) ||
+        "dev";
     let escapedMsg = msg;
     if ((0, os_1.platform)() === "darwin")
         escapedMsg = escapedMsg.replace(/\$/g, "\\$");
-    (0, child_process_1.execSync)("git branch -M " + branch + ' && git add . && git commit -m "' + escapedMsg + '" && git push -u origin ' + branch, {
+    (0, child_process_1.execSync)("git branch -M " +
+        branch +
+        ' && git add . && git commit -m "' +
+        escapedMsg +
+        '" && git push -u origin ' +
+        branch, {
         stdio: "inherit",
     });
 }
