@@ -2,8 +2,8 @@ import { loadRoute } from "../load"
 
 export default loadRoute(function () {
   this.get("/client", (c) => {
-    let res = this.client.user.toJSON()
-
+    const { user, application } = this.client
+    let res = { user: user.toJSON(), application: application.toJSON() }
     return c.json(res)
   })
 })

@@ -1,12 +1,15 @@
 import { ForgeClient } from "@tryforge/forgescript"
-import { WeebPanel } from "../Wepan"
+import { WeebPanel } from "../classes/Wepan"
 import { config } from "dotenv"
 config()
+
+const CHLID = "1482304931896754298"
 
 const panel = new WeebPanel({
   server: {
     port: 5555,
   },
+  events: ["connect", "error", "listen"],
 })
 
 const client = new ForgeClient({
@@ -15,6 +18,24 @@ const client = new ForgeClient({
   intents: ["MessageContent", "GuildMessages", "Guilds"],
   events: ["messageCreate", "clientReady"],
   extensions: [panel],
+})
+
+panel.commands.add({
+  type: "error",
+  code: `
+    $sendMessage[${CHLID};
+      $title[$wpn[method] $wpn[path]]
+      $description[$error]
+    ]
+  `,
+})
+panel.commands.add({
+  type: "listen",
+  code: `
+    $sendMessage[${CHLID};
+      $wpn[method] $wpn[path]
+    ]
+  `,
 })
 
 client.commands.add({

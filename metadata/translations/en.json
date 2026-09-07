@@ -1,1 +1,1 @@
-{"functions":{"$panelVersion":{"description":"Returns installed panel version."}},"events":{}}
+{"functions":{"$error":{"description":"Returns the error message"},"$panelCtx":{"description":"Returns the context info","args":{"property":{"description":"The proprty of context"}}},"$panelVersion":{"description":"Returns installed panel version."}},"events":{}}

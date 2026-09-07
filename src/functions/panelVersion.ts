@@ -1,6 +1,6 @@
 import { Arg, ArgType, NativeFunction } from "@tryforge/forgescript"
 
-import { WeebPanel } from "../Wepan"
+import { WeebPanel } from "../classes/Wepan"
 
 export default new NativeFunction({
   name: "$panelVersion",

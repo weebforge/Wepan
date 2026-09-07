@@ -1,6 +1,6 @@
 import { ForgeClient } from "@tryforge/forgescript"
 
-export * from "./Wepan"
+export * from "./classes/Wepan"
 
 declare module "hono" {
   interface Hono {
