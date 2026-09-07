@@ -3,12 +3,18 @@ import { WeebPanel } from "../Wepan"
 import { config } from "dotenv"
 config()
 
+const panel = new WeebPanel({
+  server: {
+    port: 5555,
+  },
+})
+
 const client = new ForgeClient({
   prefixes: ["!"],
   token: process.env.Token!,
   intents: ["MessageContent", "GuildMessages", "Guilds"],
   events: ["messageCreate", "clientReady"],
-  extensions: [new WeebPanel()],
+  extensions: [panel],
 })
 
 client.commands.add({

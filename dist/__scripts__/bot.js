@@ -4,12 +4,17 @@ const forgescript_1 = require("@tryforge/forgescript");
 const Wepan_1 = require("../Wepan");
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
+const panel = new Wepan_1.WeebPanel({
+    server: {
+        port: 5555,
+    },
+});
 const client = new forgescript_1.ForgeClient({
     prefixes: ["!"],
     token: process.env.Token,
     intents: ["MessageContent", "GuildMessages", "Guilds"],
     events: ["messageCreate", "clientReady"],
-    extensions: [new Wepan_1.WeebPanel()],
+    extensions: [panel],
 });
 client.commands.add({
     name: "ping",
