@@ -15,4 +15,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./classes/Wepan"), exports);
+__exportStar(require("./classes/WepanPermission"), exports);
 //# sourceMappingURL=index.js.map

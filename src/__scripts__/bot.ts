@@ -1,6 +1,8 @@
 import { ForgeClient } from "@tryforge/forgescript"
 import { WeebPanel } from "../classes/Wepan"
+import { WeebPanelPermission } from "../classes/WepanPermission"
 import { config } from "dotenv"
+
 config()
 
 const CHLID = "1546448087071989760"
@@ -10,6 +12,14 @@ const panel = new WeebPanel({
     port: 5555,
   },
   events: ["connect", "error", "listen"],
+  access: [
+    {
+      userId: "910837428862984213",
+      token: process.env.AccessToken!,
+      permissions: [WeebPanelPermission.Admin],
+    },
+  ],
+  logAccessKeys: true,
 })
 
 const client = new ForgeClient({
