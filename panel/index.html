@@ -33,7 +33,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <link href="style.css" rel="stylesheet" />
   </head>
@@ -168,7 +168,21 @@
     </main>
 
     <script>
-      lucide.createIcons();
+      const iconsToLoad = [
+        "Menu",
+        "User",
+        "Bot",
+        "Server",
+        "Users",
+        "Clock",
+        "LoaderCircle",
+      ];
+      lucide.createIcons({
+        icons: iconsToLoad.reduce((acc, iconName) => {
+          acc[iconName] = lucide[iconName];
+          return acc;
+        }, {}),
+      });
     </script>
 
     <script src="bundle.js"></script>
