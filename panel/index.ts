@@ -1,3 +1,5 @@
+import { loadLoggedinUser, login } from "./scripts/login";
+
 import { $ } from "./scripts/functions/$";
 import { Animate } from "./scripts/functions/animate";
 import { Fetchers } from "./scripts/fetch";
@@ -17,9 +19,9 @@ async function loadBotInfo() {
   ]);
 
   const [botAvatarElement, botNameElement, botDescriptionElement] = [
-    $<"div">("div[data-unloaded]"),
-    $<"h1">("h1[data-unloaded]"),
-    $<"p">("p[data-unloaded]"),
+    $<"div">("div[data-unloaded]", homePageElement),
+    $<"h1">("h1[data-unloaded]", homePageElement),
+    $<"p">("p[data-unloaded]", homePageElement),
   ];
   if (botAvatarElement) {
     loadElement(botAvatarElement, (el) =>
@@ -70,4 +72,5 @@ async function loadBotInfo() {
 
 document.addEventListener("DOMContentLoaded", () => {
   loadBotInfo();
+  login().then((v) => v && loadLoggedinUser());
 });

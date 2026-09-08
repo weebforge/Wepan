@@ -37,6 +37,7 @@
     "@typescript-eslint/eslint-plugin": "^8.69.0",
     "@typescript-eslint/parser": "^8.69.0",
     "concurrently": "^10.0.5",
+    "discord-api-types": "^0.38.55",
     "dotenv": "^17.4.2",
     "esbuild": "^0.28.2",
     "eslint": "^10.10.0",

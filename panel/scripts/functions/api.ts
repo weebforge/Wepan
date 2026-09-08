@@ -1,3 +1,5 @@
+import { Store } from "./store";
+
 export async function api<R>(path: string, options?: RequestInit): Promise<R> {
   const response = await fetch("/api" + path, options);
   return response.json();
@@ -8,7 +10,7 @@ export function apiPrivate<R>(
   options?: RequestInit,
   token?: string,
 ): Promise<R> {
-  const accessToken = token ?? localStorage.getItem("accessToken");
+  const accessToken = token ?? Store.get("accessToken");
   if (!accessToken) {
     throw new Error("Access token not found");
   }

@@ -1,5 +1,5 @@
-import { EnumLike } from "./types";
-import { api } from "./functions/api";
+import { EnumLike, IDiscord } from "./types";
+import { api, apiPrivate } from "./functions/api";
 
 export const Fetchers = {
   Backend: {
@@ -9,6 +9,18 @@ export const Fetchers = {
     BotInfoPublic() {
       return api<IFetched["Backend"]["BotInfoPublic"]>("/client-public");
     },
+
+    User(userId: string = "@me") {
+      return apiPrivate<IFetched["Backend"]["User"]>(`/user/${userId}`);
+    },
+  },
+  Login(token: string) {
+    return api<IFetched["Login"]>("/login", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   },
 };
 
@@ -32,5 +44,10 @@ export interface IFetched {
       id: string;
       description: string | null;
     };
+    User: IDiscord["User"];
+  };
+  Login: {
+    user: string;
+    permissions: number;
   };
 }

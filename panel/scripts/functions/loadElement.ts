@@ -3,7 +3,7 @@ export function loadElement<T extends HTMLElement>(
   callback: (el: T) => void,
 ): T {
   el.removeAttribute("data-unloaded");
-  el.classList.remove("animate-pulse");
+  el.classList.remove("animate-pulse", "animate-spin");
 
   callback(el);
 

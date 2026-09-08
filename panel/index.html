@@ -68,7 +68,59 @@
         </div>
 
         <div class="flex items-center gap-6">
+          <div id="user-menu" class="group relative hidden">
+            <button
+              id="user-button"
+              class="flex items-center gap-3 rounded-xl border border-[#d7d1c3] bg-[#eee9dc] px-4 py-2.5 pr-5 transition hover:bg-[#d7d1c3]/50"
+            >
+              <i
+                id="user-avatar"
+                data-lucide="loader"
+                data-unloaded
+                class="animate-spin h-9 w-9"
+              >
+              </i>
+              <span
+                id="user-username"
+                data-unloaded
+                class="animate-pulse font-semibold"
+                >Loading...</span
+              >
+            </button>
+
+            <!-- Dropdown: shown on hover of the whole menu -->
+            <div
+              class="invisible absolute right-0 top-full z-10 mt-2 w-56 origin-top-right rounded-xl border border-[#d7d1c3] bg-[#eee9dc] p-2 opacity-0 shadow-xl transition group-hover:visible group-hover:opacity-100"
+            >
+              <div class="px-3 py-2">
+                <p
+                  class="text-xs font-medium uppercase tracking-wide text-[#151819]/50"
+                >
+                  User ID
+                </p>
+                <p
+                  id="user-id"
+                  data-unloaded
+                  class="animate-pulse select-all font-mono text-sm text-[#151819]/80"
+                >
+                  0000000000000000000
+                </p>
+              </div>
+
+              <div class="my-1 h-px bg-[#d7d1c3]"></div>
+
+              <button
+                id="logout-button"
+                class="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left font-semibold text-[#762c26] transition hover:bg-[#762c26]/10"
+              >
+                <i data-lucide="log-out" class="h-4 w-4"></i>
+                Logout
+              </button>
+            </div>
+          </div>
+
           <button
+            id="login-button"
             class="flex items-center gap-2 rounded-xl bg-[#762c26] px-6 py-3 font-semibold text-[#eee9dc] transition hover:bg-[#662a25]"
           >
             <i data-lucide="user" class="h-5 w-5"></i>
@@ -167,6 +219,70 @@
       </section>
     </main>
 
+    <!-- Access Token Modal -->
+    <div
+      id="login-modal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/40 backdrop-blur-sm"
+    >
+      <div
+        class="w-full max-w-md rounded-2xl border border-[#d7d1c3] bg-[#eee9dc] p-8 shadow-xl"
+      >
+        <div class="mb-6 flex items-start justify-between">
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight">Access Token</h2>
+            <p class="mt-1 text-sm text-[#151819]/60">
+              Paste your token below to log in.
+            </p>
+          </div>
+
+          <button
+            id="login-modal-close"
+            aria-label="Close"
+            class="flex h-9 w-9 items-center justify-center rounded-lg text-[#151819]/60 transition hover:bg-[#e3ddcf]"
+          >
+            <i data-lucide="x" class="h-5 w-5"></i>
+          </button>
+        </div>
+
+        <label
+          for="login-modal-input"
+          class="mb-2 block text-sm font-semibold text-[#151819]/80"
+        >
+          Access Token
+        </label>
+        <input
+          id="login-modal-input"
+          type="password"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Enter your access token"
+          class="w-full rounded-xl border border-[#d7d1c3] bg-[#e3ddcf] px-4 py-3 text-[#151819] outline-none transition focus:border-[#762c26]"
+        />
+        <p
+          id="login-modal-error"
+          class="mt-2 hidden text-sm font-medium text-[#762c26]"
+        >
+          Please enter a token.
+        </p>
+
+        <div class="mt-6 flex justify-end gap-3">
+          <button
+            id="login-modal-cancel"
+            class="rounded-xl px-5 py-2.5 font-semibold text-[#151819]/70 transition hover:bg-[#e3ddcf]"
+          >
+            Cancel
+          </button>
+          <button
+            id="login-modal-save"
+            class="flex items-center gap-2 rounded-xl bg-[#762c26] px-5 py-2.5 font-semibold text-[#eee9dc] transition hover:bg-[#662a25]"
+          >
+            <i data-lucide="check" class="h-5 w-5"></i>
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+
     <script>
       const iconsToLoad = [
         "Menu",
@@ -176,6 +292,10 @@
         "Users",
         "Clock",
         "LoaderCircle",
+        "X",
+        "Check",
+        "LogOut",
+        "Loader",
       ];
       lucide.createIcons({
         icons: iconsToLoad.reduce((acc, iconName) => {
