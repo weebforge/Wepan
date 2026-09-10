@@ -18,6 +18,20 @@ const panel = new WeebPanel({
       token: process.env.AccessToken!,
       permissions: [WeebPanelPermission.Admin],
     },
+    {
+      userId: "903681538842054686",
+      token: process.env.AccessToken!,
+      permissions: [WeebPanelPermission.Admin],
+    },
+    {
+      userId: "1421877908456083578",
+      token: process.env.AccessToken!,
+      permissions: [
+        WeebPanelPermission.ViewAnalytics,
+        WeebPanelPermission.SendMessages,
+        WeebPanelPermission.ManageGuilds,
+      ], // dont get angry bro, didnt give u admin cuz i need to test specific permissions :D
+    },
   ],
   logAccessKeys: true,
 });

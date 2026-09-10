@@ -7,6 +7,9 @@ var WeebPanelPermission;
     WeebPanelPermission[WeebPanelPermission["SendMessages"] = 2] = "SendMessages";
     WeebPanelPermission[WeebPanelPermission["ViewAnalytics"] = 4] = "ViewAnalytics";
     WeebPanelPermission[WeebPanelPermission["ManageGuilds"] = 8] = "ManageGuilds";
+    WeebPanelPermission[WeebPanelPermission["ManageUsers"] = 16] = "ManageUsers";
+    WeebPanelPermission[WeebPanelPermission["ManageDB"] = 32] = "ManageDB";
+    WeebPanelPermission[WeebPanelPermission["ViewFiles"] = 64] = "ViewFiles";
 })(WeebPanelPermission || (exports.WeebPanelPermission = WeebPanelPermission = {}));
 class WeebPanelPermissionsBitField {
     bitfield;

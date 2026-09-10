@@ -9,6 +9,11 @@ const entryPoints = [
   { in: "panel/index.ts", out: "index" },
   { in: "panel/scripts/tabs/home.ts", out: "tabs/home" },
   { in: "panel/scripts/tabs/files.ts", out: "tabs/files" },
+  { in: "panel/scripts/tabs/db.ts", out: "tabs/db" },
+  { in: "panel/scripts/tabs/analytics.ts", out: "tabs/analytics" },
+  { in: "panel/scripts/tabs/guilds.ts", out: "tabs/guilds" },
+  { in: "panel/scripts/tabs/message-builder.ts", out: "tabs/message-builder" },
+  { in: "panel/scripts/tabs/users.ts", out: "tabs/users" },
 ];
 
 const buildOptions = {

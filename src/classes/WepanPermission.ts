@@ -3,6 +3,9 @@ export enum WeebPanelPermission {
   SendMessages = 1 << 1, // Ability to send messages through the panel
   ViewAnalytics = 1 << 2, // Ability to view analytics and reports
   ManageGuilds = 1 << 3, // Ability to manage guild settings and configurations
+  ManageUsers = 1 << 4, // Ability to manage users and view all the users
+  ManageDB = 1 << 5, // Ability to manage the database
+  ViewFiles = 1 << 6, // Ability to view bot files
 }
 
 export type WeebPanelPermissionResolvable =

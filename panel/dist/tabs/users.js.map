@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../scripts/tabs/users.ts"],
+  "sourcesContent": ["export {};\n\nconsole.log(\"Feature to be implemented.\");\n"],
+  "mappings": "mBAEA,QAAQ,IAAI,4BAA4B",
+  "names": []
+}

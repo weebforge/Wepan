@@ -56,6 +56,34 @@
       >
         <i data-lucide="folder-open" class="h-6 w-6"></i>
       </button>
+      <button
+        data-tab="guilds"
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Bot Guilds"
+      >
+        <i data-lucide="server" class="h-6 w-6"></i>
+      </button>
+      <button
+        data-tab="users"
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Bot Users"
+      >
+        <i data-lucide="users" class="h-6 w-6"></i>
+      </button>
+      <button
+        data-tab="message-builder"
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Message Builder"
+      >
+        <i data-lucide="message-square-share" class="h-6 w-6"></i>
+      </button>
+      <button
+        data-tab="analytics"
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Analytics"
+      >
+        <i data-lucide="chart-spline" class="h-6 w-6"></i>
+      </button>
     </aside>
 
     <main class="ml-20 min-h-screen p-5">
@@ -244,6 +272,78 @@
           <span>Feature not implemented yet</span>
         </div>
       </section>
+
+      <!-- This is guilds sections and it requires access -->
+      <section
+        data-tab-panel="guilds"
+        id="guilds-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-start rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <h1 class="text-center text-5xl font-bold tracking-tight sm:text-6xl">
+          Manage Guilds
+        </h1>
+
+        <div
+          class="mt-8 flex items-center gap-3 rounded-xl border border-green-300 bg-green-100 px-5 py-4 font-semibold text-green-800 shadow-[0_0_0_1px_rgba(134,239,172,0.4),0_0_18px_rgba(34,197,94,0.18)] animate-pulse [animation-duration:2.2s]"
+        >
+          <i data-lucide="construction" class="h-6 w-6"></i>
+          <span>Feature not implemented yet</span>
+        </div>
+      </section>
+
+      <!-- This is users sections and it requires access -->
+      <section
+        data-tab-panel="users"
+        id="users-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-start rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <h1 class="text-center text-5xl font-bold tracking-tight sm:text-6xl">
+          Manage Users
+        </h1>
+
+        <div
+          class="mt-8 flex items-center gap-3 rounded-xl border border-green-300 bg-green-100 px-5 py-4 font-semibold text-green-800 shadow-[0_0_0_1px_rgba(134,239,172,0.4),0_0_18px_rgba(34,197,94,0.18)] animate-pulse [animation-duration:2.2s]"
+        >
+          <i data-lucide="construction" class="h-6 w-6"></i>
+          <span>Feature not implemented yet</span>
+        </div>
+      </section>
+
+      <!-- This is message-builder sections and it requires access -->
+      <section
+        data-tab-panel="message-builder"
+        id="message-builder-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-start rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <h1 class="text-center text-5xl font-bold tracking-tight sm:text-6xl">
+          Message Builder
+        </h1>
+
+        <div
+          class="mt-8 flex items-center gap-3 rounded-xl border border-green-300 bg-green-100 px-5 py-4 font-semibold text-green-800 shadow-[0_0_0_1px_rgba(134,239,172,0.4),0_0_18px_rgba(34,197,94,0.18)] animate-pulse [animation-duration:2.2s]"
+        >
+          <i data-lucide="construction" class="h-6 w-6"></i>
+          <span>Feature not implemented yet</span>
+        </div>
+      </section>
+
+      <!-- This is analytics sections and it requires access -->
+      <section
+        data-tab-panel="analytics"
+        id="analytics-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-start rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <h1 class="text-center text-5xl font-bold tracking-tight sm:text-6xl">
+          Analytics
+        </h1>
+
+        <div
+          class="mt-8 flex items-center gap-3 rounded-xl border border-green-300 bg-green-100 px-5 py-4 font-semibold text-green-800 shadow-[0_0_0_1px_rgba(134,239,172,0.4),0_0_18px_rgba(34,197,94,0.18)] animate-pulse [animation-duration:2.2s]"
+        >
+          <i data-lucide="construction" class="h-6 w-6"></i>
+          <span>Feature not implemented yet</span>
+        </div>
+      </section>
     </main>
 
     <!-- Access Token Modal -->
@@ -326,6 +426,7 @@
 
       const iconsToLoad = [
         "Bot",
+        "ChartSpline",
         "Check",
         "Clock",
         "Construction",
@@ -334,6 +435,7 @@
         "Loader",
         "LoaderCircle",
         "LogOut",
+        "MessageSquareShare",
         "Server",
         "User",
         "Users",

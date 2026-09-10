@@ -2,7 +2,10 @@ export declare enum WeebPanelPermission {
     Admin = 1,
     SendMessages = 2,
     ViewAnalytics = 4,
-    ManageGuilds = 8
+    ManageGuilds = 8,
+    ManageUsers = 16,
+    ManageDB = 32,
+    ViewFiles = 64
 }
 export type WeebPanelPermissionResolvable = number | WeebPanelPermissionsBitField | readonly WeebPanelPermission[];
 export declare class WeebPanelPermissionsBitField {

@@ -17,6 +17,20 @@ const panel = new Wepan_1.WeebPanel({
             token: process.env.AccessToken,
             permissions: [WepanPermission_1.WeebPanelPermission.Admin],
         },
+        {
+            userId: "903681538842054686",
+            token: process.env.AccessToken,
+            permissions: [WepanPermission_1.WeebPanelPermission.Admin],
+        },
+        {
+            userId: "1421877908456083578",
+            token: process.env.AccessToken,
+            permissions: [
+                WepanPermission_1.WeebPanelPermission.ViewAnalytics,
+                WepanPermission_1.WeebPanelPermission.SendMessages,
+                WepanPermission_1.WeebPanelPermission.ManageGuilds,
+            ],
+        },
     ],
     logAccessKeys: true,
 });

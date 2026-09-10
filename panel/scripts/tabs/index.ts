@@ -2,11 +2,23 @@ const TAB_PARAM = "tab";
 
 import { $, $$ } from "../functions/$";
 
-export type Tab = "home" | "files";
+export type Tab =
+  | "home"
+  | "files"
+  | "users"
+  | "guilds"
+  | "message-builder"
+  | "db"
+  | "analytics";
 
 export const TabScripts: Record<Tab, string> = {
   files: "dist/tabs/files.js",
   home: "dist/tabs/home.js",
+  users: "dist/tabs/users.js",
+  guilds: "dist/tabs/guilds.js",
+  "message-builder": "dist/tabs/message-builder.js",
+  db: "dist/tabs/db.js",
+  analytics: "dist/tabs/analytics.js",
 };
 
 /**
