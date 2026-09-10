@@ -17,7 +17,6 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "tsc",
-    "prebuild": "node scripts/clean.js",
     "build:all": "npm run build && npm run build:js && npm run build:css",
     "prepack": "npm run build:all",
     "build": "tsc -p tsconfig.json",
