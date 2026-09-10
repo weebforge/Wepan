@@ -29,7 +29,7 @@
     <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
     <link rel="apple-touch-icon" href="assets/logo.svg" />
 
-    <title>WePan</title>
+    <title>WeebPanel</title>
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
@@ -40,13 +40,21 @@
 
   <body class="min-h-screen bg-[#eee9dc] text-[#151819] font-sans">
     <aside
-      class="fixed left-0 top-0 flex h-screen w-20 flex-col items-center border-r border-[#d7d1c3] bg-[#e3ddcf] py-6"
+      class="fixed left-0 top-0 flex h-screen w-20 flex-col gap-2.5 items-center border-r border-[#d7d1c3] bg-[#e3ddcf] py-6"
     >
       <button
+        data-tab="home"
         class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
-        aria-label="Menu"
+        aria-label="Home"
       >
-        <i data-lucide="menu" class="h-6 w-6"></i>
+        <i data-lucide="house" class="h-6 w-6"></i>
+      </button>
+      <button
+        data-tab="files"
+        class="flex h-11 w-11 items-center justify-center rounded-xl text-[#762c26] transition hover:bg-[#d7d1c3]"
+        aria-label="Bot Files"
+      >
+        <i data-lucide="folder-open" class="h-6 w-6"></i>
       </button>
     </aside>
 
@@ -54,17 +62,17 @@
       <header
         class="flex h-24 items-center justify-between rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-8"
       >
-        <div class="flex items-center gap-3">
+        <div
+          class="cursor-pointer flex items-center gap-3"
+          id="header-brand-name"
+          role="link"
+          tabindex="0"
+        >
           <div class="flex h-16 w-16 items-center justify-center">
             <img src="assets/logo.svg" />
           </div>
 
-          <span
-            id="header-brand-name"
-            class="text-3xl font-bold tracking-tight"
-          >
-            WeebPanel
-          </span>
+          <span class="text-3xl font-bold tracking-tight"> WeebPanel </span>
         </div>
 
         <div class="flex items-center gap-6">
@@ -131,6 +139,7 @@
 
       <!-- This is home page, shown to both states: access and no access -->
       <section
+        data-tab-panel="home"
         id="home-page"
         class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-center rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
       >
@@ -217,6 +226,24 @@
           </div>
         </div>
       </section>
+
+      <!-- This is files sections and it requires access -->
+      <section
+        data-tab-panel="files"
+        id="files-page"
+        class="mt-5 flex min-h-[calc(100vh-149px)] flex-col items-center justify-start rounded-2xl border border-[#d7d1c3] bg-[#e3ddcf] px-6 py-16"
+      >
+        <h1 class="text-center text-5xl font-bold tracking-tight sm:text-6xl">
+          Bot Files
+        </h1>
+
+        <div
+          class="mt-8 flex items-center gap-3 rounded-xl border border-green-300 bg-green-100 px-5 py-4 font-semibold text-green-800 shadow-[0_0_0_1px_rgba(134,239,172,0.4),0_0_18px_rgba(34,197,94,0.18)] animate-pulse [animation-duration:2.2s]"
+        >
+          <i data-lucide="construction" class="h-6 w-6"></i>
+          <span>Feature not implemented yet</span>
+        </div>
+      </section>
     </main>
 
     <!-- Access Token Modal -->
@@ -284,14 +311,29 @@
     </div>
 
     <script>
+      const brandName = document.getElementById("header-brand-name");
+      const goToRoot = () => {
+        window.location.href = "/";
+      };
+
+      brandName.addEventListener("click", goToRoot);
+      brandName.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          goToRoot();
+        }
+      });
+
       const iconsToLoad = [
         "Bot",
         "Check",
         "Clock",
+        "Construction",
+        "FolderOpen",
+        "House",
         "Loader",
         "LoaderCircle",
         "LogOut",
-        "Menu",
         "Server",
         "User",
         "Users",
@@ -305,6 +347,6 @@
       });
     </script>
 
-    <script src="bundle.js"></script>
+    <script src="dist/index.js"></script>
   </body>
 </html>

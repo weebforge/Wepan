@@ -4,7 +4,10 @@ dist/__scripts__
 dist/@build
 dist/docgen.*
 eslint.config.mjs
-tsconfig.json
 metadata
 docs
 panel/scripts
+scripts
+panel/style.tw.css
+panel/index.ts
+tsconfig.*

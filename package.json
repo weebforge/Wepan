@@ -17,15 +17,18 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "tsc",
+    "prebuild": "node scripts/clean.js",
+    "build:all": "npm run build && npm run build:js && npm run build:css",
+    "prepack": "npm run build:all",
     "build": "tsc -p tsconfig.json",
     "watch": "concurrently \"npm run watch:css\" \"npm run watch:js\"",
     "build:css": "npx @tailwindcss/cli -i ./panel/style.tw.css -o ./panel/style.css",
     "watch:css": "npx @tailwindcss/cli -i ./panel/style.tw.css -o ./panel/style.css --watch",
-    "docgen": "npm run eslint && npm run build && npm run build:js&& npm run build:css && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
+    "docgen": "npm run eslint && npm run build:all && typedoc ./src --plugin typedoc-rhineai-theme --out ./docs && node dist/docgen",
     "eslint": "eslint ./src/**/* --fix && prettier src panel --write",
     "commit": "npm run docgen && node dist/@build/commit",
-    "build:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --minify --sourcemap && uglifyjs panel/bundle.js -c -m --toplevel -o panel/bundle.js ",
-    "watch:js": "esbuild panel/index.ts --bundle --outfile=panel/bundle.js --sourcemap --watch",
+    "build:js": "node scripts/build-js.js",
+    "watch:js": "node scripts/build-js.js --watch",
     "test": "npm run build && node dist/__scripts__/index"
   },
   "devDependencies": {
