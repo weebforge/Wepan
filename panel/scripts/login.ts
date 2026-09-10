@@ -1,7 +1,8 @@
+import { Fetchers, checkAccess } from "./fetch";
+
 import { $ } from "./functions/$";
 import { Animate } from "./functions/animate";
 import { DiscordCDN } from "./functions/discordCdn";
-import { Fetchers } from "./fetch";
 import { Store } from "./functions/store";
 import { elementBuild } from "./functions/elementBuild";
 import { loadElement } from "./functions/loadElement";
@@ -79,6 +80,7 @@ async function login(): Promise<boolean> {
     saveBtnElement.textContent = "Checking...";
 
     const hasAccess = await checkAccess(token);
+    console.log({ hasAccess, checkAccess, token });
 
     saveBtnElement.disabled = false;
     saveBtnElement.textContent = "Save";
@@ -114,15 +116,6 @@ async function login(): Promise<boolean> {
   });
 
   return false;
-}
-
-async function checkAccess(token: string): Promise<boolean> {
-  try {
-    let res = await Fetchers.Login(token);
-    return res.permissions > 0;
-  } catch (error) {
-    return false;
-  }
 }
 
 async function loadLoggedinUser() {

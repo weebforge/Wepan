@@ -1,4 +1,3 @@
-dist
-panel/bundle.*
+./dist
 panel/assets
 panel/style.css

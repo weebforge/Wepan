@@ -24,6 +24,15 @@ export const Fetchers = {
   },
 };
 
+export async function checkAccess(token: string): Promise<boolean> {
+  try {
+    let res = await Fetchers.Login(token);
+    return res.permissions > 0;
+  } catch (error) {
+    return false;
+  }
+}
+
 export interface IFetched {
   Backend: {
     BotStats: {

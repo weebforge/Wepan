@@ -35,6 +35,15 @@ function uglifyDist() {
       stdio: "inherit",
     });
   }
+
+  // wrap (() => {...})()
+  for (const file of walk("panel/dist")) {
+    const code = fs.readFileSync(file, "utf8");
+    fs.writeFileSync(
+      file,
+      `// WeebForge is cool, isnt it?\n(() => {${code}})();`,
+    );
+  }
 }
 
 async function run() {
